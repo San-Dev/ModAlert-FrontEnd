@@ -24,9 +24,11 @@ function modAlertClass(timer) {
 			'<div class="modAlert-text">' + text + '</div>'+
 			'</div>');
 		item.appendTo('.modAlert').slideDown(200);
-		setTimeout(function(){
-			hideItem(item);
-		}, timer);
+		if (timer) {
+			setTimeout(function(){
+				hideItem(item);
+			}, timer);
+		}
 	}
 	function hideItem(item) {
 		item.animate({left: '-500px'}, 220, function() {
