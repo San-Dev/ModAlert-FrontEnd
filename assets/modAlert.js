@@ -5,7 +5,7 @@ function modAlertClass(timer) {
 	var lang = {
 		success: 'Успешно',
 		info:    'Информация',
-		warning: 'Внимание',
+		warning: 'Внимание!',
 		error:   'Ошибка'
 	}
 	this.setLang = function (custom_lang) {
