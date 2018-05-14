@@ -28,3 +28,5 @@ modAlert.setLang({
 var modAlert = new modAlertClass(5000); //5 секунд
 var modAlert = new modAlertClass(0); //не скрывать вообще
 ```
+
+Демо: https://sandev.pro/demo/ModAlert.html
