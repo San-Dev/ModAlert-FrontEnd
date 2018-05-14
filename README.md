@@ -22,3 +22,9 @@ modAlert.setLang({
     error:   'Error',
 });
 ```
+
+По умолчанию сообщения скрываются через 3 секунды. Это время можно настроить при инициализации:
+```
+var modAlert = new modAlertClass(5000); //5 секунд
+var modAlert = new modAlertClass(0); //не скрывать вообще
+```
