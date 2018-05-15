@@ -5,28 +5,38 @@
 
 Примеры использования:
 ```
-modAlert.addAlert('Все сделано как надо', 'success');
-modAlert.addAlert('Простое информационное сообщение', 'info');
-modAlert.addAlert('Предупреждение или сообщение требующее внимания', 'warning');
-modAlert.addAlert('Сообщение об ошибке', 'error');
+	ModAlert.addAlert({
+		type: 'success',
+		text: 'Сообщение об успехе',
+	});
+	ModAlert.addAlert({
+		type: 'info',
+		text: 'Информация о чем либо, просто для сведения',
+	});
+	ModAlert.addAlert({
+		type: 'warning',
+		text: 'Не ошибка, но требует обратить на себя внимание',
+	});
+	ModAlert.addAlert({
+		type: 'error',
+		text: 'Тут произошла ошибка...',
+	});
 
-modAlert.addAlert('Сообщение с ручным вводом заголовка<br/>По умолчанию прописаны 4 типа блока с заголовками: <b>success, info, warning и error</b><br/>Они же соответственно прописаны и в файле стилей', 'none', 'Свой заголовок');
+	ModAlert.addAlert({
+		title: 'Свой заголовок',
+		text: 'Сообщение с ручным вводом заголовка<br/>По умолчанию прописаны 4 типа блока с заголовками: <b>success, info, warning и error</b><br/>Они же соответственно прописаны и в файле стилей',
+	});
 ```
 
-Чтобы задать свой язык для стандартных заголовков можно использовать функцию:
+Перечень принимаемых параметров:
 ```
-modAlert.setLang({
-    success: 'Done',
-    info:    'Info',
-    warning: 'Warning',
-    error:   'Error',
-});
+	type: '',        //тип блока, по умолчанию в стилях прописаны: success, info, warning и error
+	title: '',       //заголовок. Если заголовок не указан, но указан тип, заголовок будет взят от типа
+	text: '',        //текст сообщения
+	timeout: 3000,   //время показа блока
+	autohide: true,  //автоматически скрывать блок по истечению времени
+	showicon: true,  //показывать иконку
 ```
 
-По умолчанию сообщения скрываются через 3 секунды. Это время можно настроить при инициализации:
-```
-var modAlert = new modAlertClass(5000); //5 секунд
-var modAlert = new modAlertClass(0); //не скрывать вообще
-```
 
 Демо: https://sandev.pro/demo/ModAlert.html
