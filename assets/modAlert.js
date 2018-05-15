@@ -36,6 +36,9 @@ var ModAlert = {
 		}
 		if (!options.title || !options.text || options.notitle) {
 			item_class.push('modAlert-onerow');
+			if (options.notitle) {
+				item_class.push('modAlert-notitle');
+			}
 		}
 		var item = '<div class="' + item_class.join(' ') + '">';
 		if (options.showicon) {
