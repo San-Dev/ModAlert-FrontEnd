@@ -17,7 +17,11 @@ var ModAlert = {
 		}
 		var options = $.extend({}, this.config, param);
 		if (!options.title) {
-			options.title = this.type[options.type];
+			if (this.type[options.type]) {
+				options.title = this.type[options.type];
+			} else if (options.type) {
+				options.title = options.type;
+			}
 		}
 		var item_class = ['modAlert-item'];
 		if (options.type) {
