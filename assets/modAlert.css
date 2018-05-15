@@ -31,6 +31,12 @@
 	border-radius: 2px;
 	cursor: pointer;
 }
+.modAlert-item.modAlert-onerow {
+	padding-top: 10px;
+}
+.modAlert-item.modAlert-noicon {
+	padding-left: 22px;
+}
 .modAlert-item:hover{
 	background: #fff;
 }
