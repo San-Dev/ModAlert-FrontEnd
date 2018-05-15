@@ -37,6 +37,10 @@
 .modAlert-item.modAlert-noicon {
 	padding-left: 22px;
 }
+.modAlert-item.modAlert-notitle {
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
 .modAlert-item:hover{
 	background: #fff;
 }
