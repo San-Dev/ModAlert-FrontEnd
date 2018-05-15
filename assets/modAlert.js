@@ -1,36 +1,58 @@
-function modAlertClass(timer) {
-	if (arguments.length < 1) {
-		timer = 3000;
-	}
-	var lang = {
+var ModAlert = {
+	config: {
+		timeout: 3000,
+		autohide: true,
+		showicon: true,
+	},
+	type: {
 		success: 'Успешно',
 		info:    'Информация',
 		warning: 'Внимание!',
 		error:   'Ошибка'
-	}
-	this.setLang = function (custom_lang) {
-		lang = $.extend(lang, custom_lang);
-	}
-	this.addAlert = function (text, method, title) {
+	},
+	addAlert: function(param) {
+		var self = this;
 		if ($('.modAlert').length < 1) {
-			$('body').append('<div class="modAlert"/>');
+			$('body').append('<div class="modAlert"></div>');
 		}
-		if (arguments.length < 3) {
-			title = lang[method];
+		var options = $.extend({}, this.config, param);
+		if (!options.title) {
+			options.title = this.type[options.type];
 		}
-		var item = $('<div class="modAlert-item modAlert-' + method + '">'+
-			'<div class="modAlert-icon"></div>'+
-			'<div class="modAlert-title">' + title + '</div>'+
-			'<div class="modAlert-text">' + text + '</div>'+
-			'</div>');
-		item.appendTo('.modAlert').slideDown(200);
-		if (timer) {
+		var item_class = ['modAlert-item'];
+		if (options.type) {
+			item_class.push('modAlert-' + options.type);
+		}
+		if (!options.showicon) {
+			item_class.push('modAlert-noicon');
+		}
+		if (!options.title || !options.text) {
+			item_class.push('modAlert-onerow');
+		}
+		var item = '<div class="' + item_class.join(' ') + '">';
+		if (options.showicon) {
+			item += '<div class="modAlert-icon"></div>';
+		}
+		if (options.title) {
+			item += '<div class="modAlert-title">' + options.title + '</div>';
+		}
+		if (options.text) {
+			item += '<div class="modAlert-text">' + options.text + '</div>';
+		}
+		item += '</div>';
+		var $item = $(item);
+		$item.appendTo('.modAlert').slideDown(200);
+		$item.click(function(){
+			self.hideItem($(this));
+		})
+		if (options.autohide && options.timeout > 0) {
 			setTimeout(function(){
-				hideItem(item);
-			}, timer);
+				self.hideItem($item);
+			}, options.timeout);
 		}
-	}
-	function hideItem(item) {
+		return false;
+	},
+	hideItem: function (item) {
 		item.animate({left: '-500px'}, 220, function() {
 			$(this).remove();
 			if ($('.modAlert-item').length < 1) {
@@ -38,8 +60,4 @@ function modAlertClass(timer) {
 			}
 		});
 	}
-	$(document).on('click', '.modAlert-item', function(){
-		hideItem($(this));
-	})
 }
-var modAlert = new modAlertClass();
