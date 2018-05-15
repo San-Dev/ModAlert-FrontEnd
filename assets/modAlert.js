@@ -53,7 +53,7 @@ var ModAlert = {
 		return false;
 	},
 	hideItem: function (item) {
-		item.animate({left: '-500px'}, 220, function() {
+		item.animate({left: '-' + $('.modAlert').outerWidth()}, 220, function() {
 			$(this).remove();
 			if ($('.modAlert-item').length < 1) {
 				$('.modAlert').remove();
