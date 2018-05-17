@@ -6,7 +6,7 @@ var ModAlert = {
 		timeout: 3000,
 		autohide: true,
 		showicon: true,
-		notitle: false,
+		showtitle: true,
 	},
 	type: {
 		success: 'Успешно',
@@ -34,9 +34,9 @@ var ModAlert = {
 		if (!options.showicon) {
 			item_class.push('modAlert-noicon');
 		}
-		if (!options.title || !options.text || options.notitle) {
+		if (!options.title || !options.text || !options.showtitle) {
 			item_class.push('modAlert-onerow');
-			if (options.notitle) {
+			if (!options.showtitle) {
 				item_class.push('modAlert-notitle');
 			}
 		}
@@ -44,7 +44,7 @@ var ModAlert = {
 		if (options.showicon) {
 			item += '<div class="modAlert-icon"></div>';
 		}
-		if (options.title && !options.notitle) {
+		if (options.title && options.showtitle) {
 			item += '<div class="modAlert-title">' + options.title + '</div>';
 		}
 		if (options.text) {
